@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
 	"github.com/Art0r/go-test-auth/internal/features/admin"
 	"github.com/Art0r/go-test-auth/internal/features/auth"
 	"github.com/gin-gonic/gin"
@@ -27,10 +25,7 @@ func setCorsConfig(r *gin.Engine) {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	godotenv.Load()
 
 	r := gin.Default()
 
