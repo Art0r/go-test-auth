@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o main -ldflags='-w -s' cwd/api/main.go
+# CGO_ENABLED=0 força o GO a gerar uma build sem o código em C (necessário para legado)
+# GOOS=linux força o GO a gerar uma build para um OS específico (nesse caso linux)
+RUN CGO_ENABLED=0 GOOS=linux go build -o main cwd/api/main.go
 
 FROM alpine:3.22.1
 
